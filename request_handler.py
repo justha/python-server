@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from animals import get_all_animals, get_single_animal, create_animal, update_animal
-from employees import get_all_employees, get_single_employee
-from locations import get_all_locations, get_single_location
+from employees import get_all_employees, get_single_employee, create_employee, update_employee
+from locations import get_all_locations, get_single_location, create_location, update_location
 import json
 
 
@@ -64,6 +64,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Initialize new animal
         new_animal = None
+        new_employee = None
+        new_location = None
 
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
@@ -71,8 +73,16 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "animals":
             new_animal = create_animal(post_body)
 
+        if resource == "employees":
+            new_employee = create_employee(post_body)
+
+        if resource == "locations":
+            new_location = create_location(post_body)
+
         # Encode the new animal and send in response
         self.wfile.write(f"{new_animal}".encode())
+        self.wfile.write(f"{new_employee}".encode())
+        self.wfile.write(f"{new_location}".encode())
 
 
     # Here's a method on the class that overrides the parent's method.
@@ -89,6 +99,12 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         if resource == "animals":
             update_animal(id, post_body)
+
+        if resource == "employees":
+            update_employee(id, post_body)
+
+        if resource == "locations":
+            update_location(id, post_body)
 
         # Encode the new animal and send in response
         self.wfile.write("".encode())
