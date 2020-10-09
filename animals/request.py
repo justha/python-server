@@ -3,6 +3,7 @@ ANIMALS = [
         "id": 1,
         "name": "Snickers",
         "species": "Dog",
+        "status": "sweet",
         "locationId": 1,
         "customerId": 4
     },
@@ -10,6 +11,7 @@ ANIMALS = [
         "id": 2,
         "name": "Gerry",
         "species": "Dog",
+        "status": "playing ball",
         "locationId": 1,
         "customerId": 2
     },
@@ -17,6 +19,7 @@ ANIMALS = [
         "id": 3,
         "name": "Blue",
         "species": "Cat",
+        "status": "Cat",
         "locationId": 2,
         "customerId": 1
     }
@@ -60,3 +63,11 @@ def create_animal(animal):
     return animal
     
     
+def update_animal(id, new_animal):
+    # Iterate the ANIMALS list, but use enumerate() so that
+    # you can access the index value of each item.
+    for index, animal in enumerate(ANIMALS):
+        if animal["id"] == id:
+            # Found the animal. Update the value.
+            ANIMALS[index] = new_animal
+            break
