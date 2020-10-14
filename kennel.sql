@@ -92,3 +92,13 @@ select
 	c.password
 from Customer c
 WHERE c.email = "jenna@solis.com"
+
+
+
+
+
+
+INSERT INTO `Animal` VALUES (null, "Daps", "Kennel", "Boxer", 2, 2);
+
+
+
