@@ -100,4 +100,4 @@ def update_location(id, new_location):
         if location["id"] == id:
             LOCATIONS[index] = new_location
             break    
-    
+
